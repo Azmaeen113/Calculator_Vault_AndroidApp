@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- App Colors -->
+    <color name="colorPrimary">#FF6200EE</color>
+    <color name="colorPrimaryDark">#FF3700B3</color>
+    <color name="colorAccent">#FF03DAC5</color>
+    
+    <!-- Calculator Colors -->
+    <color name="calculator_background">#FF1C1C1C</color>
+    <color name="display_text">#FFFFFFFF</color>
+    <color name="button_number">#FF333333</color>
+    <color name="button_number_text">#FFFFFFFF</color>
+    <color name="button_operator">#FFFF9800</color>
+    <color name="button_operator_text">#FFFFFFFF</color>
+    <color name="button_function">#FF505050</color>
+    <color name="button_function_text">#FFFFFFFF</color>
+    <color name="button_clear">#FFFF5252</color>
+    <color name="button_clear_text">#FFFFFFFF</color>
+    <color name="button_equals">#FF4CAF50</color>
+    <color name="button_equals_text">#FFFFFFFF</color>
+    
+    <!-- General UI Colors -->
+    <color name="background">#FFFFFFFF</color>
+    <color name="toolbar_background">#FFF5F5F5</color>
+    <color name="selection_bar_background">#FFE3F2FD</color>
+    <color name="text_primary">#FF212121</color>
+    <color name="text_secondary">#FF616161</color>
+    <color name="text_hint">#FF9E9E9E</color>
+    <color name="delete_color">#FFFF5252</color>
+    <color name="file_type_background">#FFE8E8E8</color>
+    
+    <!-- Vault Colors -->
+    <color name="vault_background">#FF1A1A2E</color>
+    <color name="vault_card_background">#FF16213E</color>
+    <color name="vault_text_primary">#FFFFFFFF</color>
+    <color name="vault_text_secondary">#FFB8B8D1</color>
+    <color name="vault_accent">#FF00D9FF</color>
+    <color name="vault_toolbar">#FF0F3460</color>
+    <color name="vault_button">#FF533483</color>
+</resources>

@@ -1,0 +1,47 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Calculator_Vault_androidApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Theme.Calculator_Vault_androidApp" parent="Base.Theme.Calculator_Vault_androidApp" />
+    
+    <!-- Calculator Button Styles -->
+    <style name="CalculatorButton" parent="Widget.Material3.Button">
+        <item name="android:layout_width">64dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">10dp</item>
+    </style>
+    
+    <style name="CalculatorButton.Number" parent="CalculatorButton">
+        <item name="backgroundTint">@color/button_number</item>
+        <item name="android:textColor">@color/button_number_text</item>
+    </style>
+    
+    <style name="CalculatorButton.Operator" parent="CalculatorButton">
+        <item name="backgroundTint">@color/button_operator</item>
+        <item name="android:textColor">@color/button_operator_text</item>
+    </style>
+    
+    <style name="CalculatorButton.Function" parent="CalculatorButton">
+        <item name="backgroundTint">@color/button_function</item>
+        <item name="android:textColor">@color/button_function_text</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    
+    <style name="CalculatorButton.Clear" parent="CalculatorButton">
+        <item name="backgroundTint">@color/button_clear</item>
+        <item name="android:textColor">@color/button_clear_text</item>
+    </style>
+    
+    <style name="CalculatorButton.Equals" parent="CalculatorButton">
+        <item name="backgroundTint">@color/button_equals</item>
+        <item name="android:textColor">@color/button_equals_text</item>
+    </style>
+</resources>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/vault_background"
+    android:fitsSystemWindows="true"
+    tools:context=".VaultActivity">
+
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/vault_toolbar"
+        app:title="🔐 Secure Vault"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@drawable/ic_lock"
+        app:navigationIconTint="@color/vault_accent" />
+
+    <!-- Selection Info Bar -->
+    <LinearLayout
+        android:id="@+id/selectionBar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:background="@color/vault_toolbar"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvSelectionCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0 selected"
+            android:textSize="14sp"
+            android:textColor="@color/vault_text_primary" />
+
+        <ImageButton
+            android:id="@+id/btnSelectAll"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_select_all"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Select All"
+            app:tint="@color/vault_accent" />
+
+        <ImageButton
+            android:id="@+id/btnClearSelection"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_clear"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Clear Selection"
+            app:tint="@color/vault_accent" />
+
+    </LinearLayout>
+
+    <!-- Empty State -->
+    <LinearLayout
+        android:id="@+id/emptyState"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/ic_folder_empty"
+            android:alpha="0.7"
+            app:tint="@color/vault_accent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No files in vault"
+            android:textSize="20sp"
+            android:textColor="@color/vault_text_primary"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tap 'Upload' to add files"
+            android:textSize="14sp"
+            android:textColor="@color/vault_text_secondary"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+    <!-- File List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFiles"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:clipToPadding="false" />
+
+    <!-- Bottom Toolbar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:paddingBottom="32dp"
+        android:background="@color/vault_card_background">
+
+        <!-- First Row of Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnUpload"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:text="Upload"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/vault_button"
+                app:icon="@drawable/ic_upload"
+                app:iconTint="@color/vault_accent"
+                app:iconGravity="textTop"
+                app:iconPadding="4dp"
+                app:iconSize="22dp"
+                app:cornerRadius="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOpen"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="4dp"
+                android:text="Open"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/vault_button"
+                app:icon="@drawable/ic_open"
+                app:iconTint="@color/vault_accent"
+                app:iconGravity="textTop"
+                app:iconPadding="4dp"
+                app:iconSize="22dp"
+                app:cornerRadius="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDownload"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:text="Download"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/vault_button"
+                app:icon="@drawable/ic_download"
+                app:iconTint="@color/vault_accent"
+                app:iconGravity="textTop"
+                app:iconPadding="4dp"
+                app:iconSize="22dp"
+                app:cornerRadius="12dp" />
+
+        </LinearLayout>
+
+        <!-- Second Row of Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDelete"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:text="Delete"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:backgroundTint="#FF5252"
+                app:icon="@drawable/ic_delete"
+                app:iconTint="@color/white"
+                app:iconGravity="textTop"
+                app:iconPadding="4dp"
+                app:iconSize="22dp"
+                app:cornerRadius="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnChangePin"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="4dp"
+                android:text="PIN"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/vault_button"
+                app:icon="@drawable/ic_key"
+                app:iconTint="@color/vault_accent"
+                app:iconGravity="textTop"
+                app:iconPadding="4dp"
+                app:iconSize="22dp"
+                app:cornerRadius="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLock"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:text="Lock"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:backgroundTint="#4CAF50"
+                app:icon="@drawable/ic_lock"
+                app:iconTint="@color/white"
+                app:iconGravity="textTop"
+                app:iconPadding="4dp"
+                app:iconSize="22dp"
+                app:cornerRadius="12dp" />
+
+        </LinearLayout>
+
+        <!-- Extra padding for navigation bar -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="24dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

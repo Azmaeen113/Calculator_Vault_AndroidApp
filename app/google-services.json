@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "53844317238",
+    "project_id": "calculator-vault-androidapp",
+    "storage_bucket": "calculator-vault-androidapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53844317238:android:ae8bdb8dbc0f818841b497",
+        "android_client_info": {
+          "package_name": "com.example.calculator_vault_androidapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-xrQoixd0jxMVvjubRs9mTLhNednYM20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

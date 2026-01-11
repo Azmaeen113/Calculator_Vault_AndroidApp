@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    
+    <!-- Calculator -->
+    <string name="history">History</string>
+    
+    <!-- PIN Setup -->
+    <string name="set_pin">Set Your PIN</string>
+    <string name="change_pin">Change PIN</string>
+    <string name="current_pin">Current PIN</string>
+    <string name="new_pin">New PIN</string>
+    <string name="confirm_pin">Confirm PIN</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    
+    <!-- Vault -->
+    <string name="secure_vault">Secure Vault</string>
+    <string name="upload_file">Upload File</string>
+    <string name="open_file">Open</string>
+    <string name="download_file">Download</string>
+    <string name="delete_file">Delete</string>
+    <string name="lock_vault">Lock Vault</string>
+    <string name="no_files">No files in vault</string>
+    
+    <!-- History -->
+    <string name="calculation_history">Calculation History</string>
+    <string name="clear_all">Clear All</string>
+    <string name="back_to_calculator">Back to Calculator</string>
+    <string name="no_history">No calculation history</string>
+</resources>
