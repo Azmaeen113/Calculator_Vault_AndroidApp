@@ -379,8 +379,10 @@ public class VaultActivity extends AppCompatActivity {
         finish();
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         lockVault();
     }
 

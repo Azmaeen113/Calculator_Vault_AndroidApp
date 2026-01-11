@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background"
+    android:background="@color/calculator_background"
     tools:context=".HistoryActivity">
 
     <!-- Toolbar -->
@@ -13,11 +13,120 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
+        android:background="@color/button_function"
         app:title="Calculation History"
         app:titleTextColor="@color/white"
         app:navigationIcon="@drawable/ic_back"
         app:navigationIconTint="@color/white" />
+
+    <!-- Sign-In State (shown when not signed in) -->
+    <LinearLayout
+        android:id="@+id/signInState"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/ic_history"
+            android:alpha="0.7"
+            app:tint="@color/button_operator" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign in to view your history"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your calculation history is stored securely in the cloud"
+            android:textSize="14sp"
+            android:textColor="@color/display_text"
+            android:alpha="0.7"
+            android:textAlignment="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="32dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGoogleSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:text="Sign in with Google"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            app:backgroundTint="@color/white"
+            app:icon="@drawable/ic_google"
+            app:iconSize="24dp"
+            app:iconGravity="textStart"
+            app:iconTint="@null" />
+
+        <TextView
+            android:id="@+id/tvSignInInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Each Google account has its own history"
+            android:textSize="12sp"
+            android:textColor="@color/display_text"
+            android:alpha="0.5"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+
+    <!-- Content State (shown when signed in) -->
+    <LinearLayout
+        android:id="@+id/contentState"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!-- User Info Bar -->
+        <LinearLayout
+            android:id="@+id/userInfoBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:background="@color/button_number"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvUserInfo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Signed in as: user@example.com"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:ellipsize="end"
+                android:maxLines="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSignOut"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign Out"
+                android:textSize="12sp"
+                android:textColor="@color/button_operator"
+                android:minHeight="0dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp" />
+
+        </LinearLayout>
 
     <!-- Empty State -->
     <LinearLayout
@@ -34,14 +143,15 @@
             android:layout_height="100dp"
             android:src="@drawable/ic_history"
             android:alpha="0.5"
-            app:tint="@color/text_secondary" />
+            app:tint="@color/button_operator" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No calculation history"
             android:textSize="18sp"
-            android:textColor="@color/text_secondary"
+            android:textColor="@color/white"
+            android:alpha="0.7"
             android:layout_marginTop="16dp" />
 
         <TextView
@@ -49,7 +159,8 @@
             android:layout_height="wrap_content"
             android:text="Your calculations will appear here"
             android:textSize="14sp"
-            android:textColor="@color/text_hint"
+            android:textColor="@color/white"
+            android:alpha="0.5"
             android:layout_marginTop="8dp" />
 
     </LinearLayout>
@@ -69,7 +180,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:background="@color/toolbar_background">
+        android:background="@color/button_number">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnClearAll"
@@ -79,8 +190,11 @@
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:text="Clear All"
-            android:textSize="16sp"
-            app:icon="@drawable/ic_delete_all" />
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/button_clear"
+            app:icon="@drawable/ic_delete_all"
+            app:iconTint="@color/white" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnBack"
@@ -88,9 +202,14 @@
             android:layout_height="56dp"
             android:layout_weight="1"
             android:layout_marginStart="8dp"
-            android:text="Back to Calculator"
-            android:textSize="16sp"
-            app:icon="@drawable/ic_calculator" />
+            android:text="Back"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/button_operator"
+            app:icon="@drawable/ic_calculator"
+            app:iconTint="@color/white" />
+
+    </LinearLayout>
 
     </LinearLayout>
 

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.calculator_vault_androidapp.database.DatabaseHelper;
 import com.example.calculator_vault_androidapp.database.FirebaseHelper;
+import com.example.calculator_vault_androidapp.models.CalculationHistory;
 import com.example.calculator_vault_androidapp.utils.CryptoUtils;
 import com.google.android.material.button.MaterialButton;
 
@@ -49,25 +50,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
 
-        // Initialize Firebase
-        initializeFirebase();
-
         // Initialize UI
         initializeUI();
-    }
-
-    private void initializeFirebase() {
-        FirebaseHelper.getInstance().authenticateAnonymously(new FirebaseHelper.AuthCallback() {
-            @Override
-            public void onSuccess(String deviceId) {
-                // Firebase authenticated successfully
-            }
-
-            @Override
-            public void onFailure(String error) {
-                // Firebase auth failed - app will work offline
-            }
-        });
     }
 
     private void initializeUI() {
@@ -450,8 +434,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             double result = evaluateExpression(evalExpression);
             String resultStr = formatNumber(result);
 
-            // Save to history
-            dbHelper.saveCalculation(displayExpression, resultStr);
+            // Save to local database
+            long historyId = dbHelper.saveCalculation(displayExpression, resultStr);
+
+            // Backup to Firebase if user is signed in
+            if (historyId != -1 && FirebaseHelper.getInstance().isAuthenticated()) {
+                CalculationHistory history = new CalculationHistory();
+                history.setId((int) historyId);
+                history.setExpression(displayExpression);
+                history.setResult(resultStr);
+                history.setCalculatedAt(new java.text.SimpleDateFormat(
+                    "yyyy-MM-dd HH:mm:ss", java.util.Locale.getDefault()).format(new java.util.Date()));
+                
+                FirebaseHelper.getInstance().backupCalculationHistory(history, 
+                    new FirebaseHelper.SyncCallback() {
+                        @Override
+                        public void onSuccess() {
+                            // Successfully synced to Firebase
+                        }
+                        @Override
+                        public void onFailure(String error) {
+                            // Failed to sync - data is still saved locally
+                        }
+                    });
+            }
 
             // Show result
             tvExpression.setText(displayExpression + " =");
@@ -576,15 +582,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         expressionText = expressionText.replaceAll("→[0-9.-]+", "");
         tvExpression.setText(expressionText);
         
-        // Show current number or expression result in main display
-        if (currentNumber.length() > 0) {
-            tvDisplay.setText(currentNumber.toString());
-        } else if (lastWasOperator) {
-            // After operator, show the full expression
-            tvDisplay.setText(expressionText.isEmpty() ? "0" : expressionText);
-        } else {
-            tvDisplay.setText(expressionText.isEmpty() ? "0" : expressionText);
-        }
+        // Always show the full expression in main display
+        tvDisplay.setText(expressionText.isEmpty() ? "0" : expressionText);
     }
     
     private void onDoubleZeroClick() {

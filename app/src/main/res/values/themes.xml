@@ -10,13 +10,21 @@
     
     <!-- Calculator Button Styles -->
     <style name="CalculatorButton" parent="Widget.Material3.Button">
-        <item name="android:layout_width">64dp</item>
-        <item name="android:layout_height">56dp</item>
-        <item name="android:layout_margin">3dp</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:layout_height">68dp</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
-        <item name="cornerRadius">10dp</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">none</item>
     </style>
     
     <style name="CalculatorButton.Number" parent="CalculatorButton">
@@ -27,12 +35,13 @@
     <style name="CalculatorButton.Operator" parent="CalculatorButton">
         <item name="backgroundTint">@color/button_operator</item>
         <item name="android:textColor">@color/button_operator_text</item>
+        <item name="android:textSize">28sp</item>
     </style>
     
     <style name="CalculatorButton.Function" parent="CalculatorButton">
         <item name="backgroundTint">@color/button_function</item>
         <item name="android:textColor">@color/button_function_text</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
     
     <style name="CalculatorButton.Clear" parent="CalculatorButton">
@@ -43,5 +52,6 @@
     <style name="CalculatorButton.Equals" parent="CalculatorButton">
         <item name="backgroundTint">@color/button_equals</item>
         <item name="android:textColor">@color/button_equals_text</item>
+        <item name="android:textSize">28sp</item>
     </style>
 </resources>

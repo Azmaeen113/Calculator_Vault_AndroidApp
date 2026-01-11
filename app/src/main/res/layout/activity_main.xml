@@ -69,152 +69,235 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
         android:paddingHorizontal="8dp"
         android:paddingBottom="24dp">
 
-    <!-- Calculator Buttons Grid -->
-    <GridLayout
-        android:id="@+id/gridButtons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:columnCount="5"
-        android:rowCount="5"
-        android:padding="4dp">
-
         <!-- Row 1: ⌫, √, x², %, ( -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnBackspace"
-            style="@style/CalculatorButton.Function"
-            android:text="⌫" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSqrt"
-            style="@style/CalculatorButton.Function"
-            android:text="√" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBackspace"
+                style="@style/CalculatorButton.Function"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="⌫"
+                android:textSize="20sp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSquare"
-            style="@style/CalculatorButton.Function"
-            android:text="x²" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSqrt"
+                style="@style/CalculatorButton.Function"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="√"
+                android:textSize="22sp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnPercent"
-            style="@style/CalculatorButton.Function"
-            android:text="%" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSquare"
+                style="@style/CalculatorButton.Function"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="x²"
+                android:textSize="20sp"
+                android:textAllCaps="false" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnOpenParen"
-            style="@style/CalculatorButton.Function"
-            android:text="(" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPercent"
+                style="@style/CalculatorButton.Function"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="%" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOpenParen"
+                style="@style/CalculatorButton.Function"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="(" />
+
+        </LinearLayout>
 
         <!-- Row 2: 7, 8, 9, ÷, ) -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn7"
-            style="@style/CalculatorButton.Number"
-            android:text="7" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn8"
-            style="@style/CalculatorButton.Number"
-            android:text="8" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn7"
+                style="@style/CalculatorButton.Number"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="7" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn9"
-            style="@style/CalculatorButton.Number"
-            android:text="9" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn8"
+                style="@style/CalculatorButton.Number"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="8" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDivide"
-            style="@style/CalculatorButton.Operator"
-            android:text="÷" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn9"
+                style="@style/CalculatorButton.Number"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="9" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCloseParen"
-            style="@style/CalculatorButton.Function"
-            android:text=")" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDivide"
+                style="@style/CalculatorButton.Operator"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="÷" />
 
-        <!-- Row 3: 4, 5, 6, ×, +/- -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn4"
-            style="@style/CalculatorButton.Number"
-            android:text="4" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCloseParen"
+                style="@style/CalculatorButton.Function"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text=")" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn5"
-            style="@style/CalculatorButton.Number"
-            android:text="5" />
+        </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn6"
-            style="@style/CalculatorButton.Number"
-            android:text="6" />
+        <!-- Row 3: 4, 5, 6, ×, ± -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnMultiply"
-            style="@style/CalculatorButton.Operator"
-            android:text="×" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn4"
+                style="@style/CalculatorButton.Number"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="4" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnPlusMinus"
-            style="@style/CalculatorButton.Function"
-            android:text="+/-" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn5"
+                style="@style/CalculatorButton.Number"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="5" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn6"
+                style="@style/CalculatorButton.Number"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="6" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMultiply"
+                style="@style/CalculatorButton.Operator"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="×" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPlusMinus"
+                style="@style/CalculatorButton.Function"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="±"
+                android:textSize="24sp" />
+
+        </LinearLayout>
 
         <!-- Row 4: 1, 2, 3, -, . -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn1"
-            style="@style/CalculatorButton.Number"
-            android:text="1" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn2"
-            style="@style/CalculatorButton.Number"
-            android:text="2" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn1"
+                style="@style/CalculatorButton.Number"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="1" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn3"
-            style="@style/CalculatorButton.Number"
-            android:text="3" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn2"
+                style="@style/CalculatorButton.Number"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="2" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSubtract"
-            style="@style/CalculatorButton.Operator"
-            android:text="-" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn3"
+                style="@style/CalculatorButton.Number"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="3" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDot"
-            style="@style/CalculatorButton.Number"
-            android:text="." />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSubtract"
+                style="@style/CalculatorButton.Operator"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="-" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDot"
+                style="@style/CalculatorButton.Number"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="." />
+
+        </LinearLayout>
 
         <!-- Row 5: C, 0, 00, =, + -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnClear"
-            style="@style/CalculatorButton.Clear"
-            android:text="C" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn0"
-            style="@style/CalculatorButton.Number"
-            android:text="0" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnClear"
+                style="@style/CalculatorButton.Clear"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="C" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn00"
-            style="@style/CalculatorButton.Number"
-            android:text="00"
-            android:textSize="16sp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn0"
+                style="@style/CalculatorButton.Number"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="0" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnEquals"
-            style="@style/CalculatorButton.Equals"
-            android:text="=" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn00"
+                style="@style/CalculatorButton.Number"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="00"
+                android:textSize="22sp"
+                android:letterSpacing="-0.05" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAdd"
-            style="@style/CalculatorButton.Operator"
-            android:text="+" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEquals"
+                style="@style/CalculatorButton.Equals"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="=" />
 
-    </GridLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAdd"
+                style="@style/CalculatorButton.Operator"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="+" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

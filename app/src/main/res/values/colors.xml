@@ -24,6 +24,7 @@
     
     <!-- General UI Colors -->
     <color name="background">#FFFFFFFF</color>
+    <color name="surface">#FFF5F5F5</color>
     <color name="toolbar_background">#FFF5F5F5</color>
     <color name="selection_bar_background">#FFE3F2FD</color>
     <color name="text_primary">#FF212121</color>

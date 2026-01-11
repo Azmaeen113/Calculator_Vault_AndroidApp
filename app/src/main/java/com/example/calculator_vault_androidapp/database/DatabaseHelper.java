@@ -286,14 +286,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * Save a calculation to history.
      * @param expression The calculation expression
      * @param result The calculation result
+     * @return The ID of the inserted row, or -1 if error
      */
-    public void saveCalculation(String expression, String result) {
+    public long saveCalculation(String expression, String result) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_HISTORY_EXPRESSION, expression);
         values.put(COL_HISTORY_RESULT, result);
         values.put(COL_HISTORY_CALCULATED_AT, dateFormat.format(new Date()));
-        db.insert(TABLE_CALCULATION_HISTORY, null, values);
+        return db.insert(TABLE_CALCULATION_HISTORY, null, values);
     }
 
     /**

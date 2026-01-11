@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="2dp"
+    android:layout_margin="6dp"
+    app:cardBackgroundColor="@color/button_number"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="0dp"
     app:strokeWidth="0dp">
 
     <LinearLayout
@@ -28,8 +29,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="123 + 456"
-                android:textSize="18sp"
-                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:alpha="0.7"
                 android:maxLines="2"
                 android:ellipsize="end" />
 
@@ -39,8 +41,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="= 579"
-                android:textSize="24sp"
-                android:textColor="@color/colorPrimary"
+                android:textSize="26sp"
+                android:textColor="@color/button_equals"
                 android:textStyle="bold"
                 android:layout_marginTop="4dp" />
 
@@ -50,8 +52,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="01/01/2024 12:00"
-                android:textSize="12sp"
-                android:textColor="@color/text_hint"
+                android:textSize="11sp"
+                android:textColor="@color/white"
+                android:alpha="0.5"
                 android:layout_marginTop="4dp" />
 
         </LinearLayout>
@@ -59,12 +62,12 @@
         <!-- Delete Button -->
         <ImageButton
             android:id="@+id/btnDelete"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:src="@drawable/ic_delete"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Delete"
-            app:tint="@color/delete_color" />
+            app:tint="@color/button_clear" />
 
     </LinearLayout>
 
