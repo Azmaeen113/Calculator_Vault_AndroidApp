@@ -167,7 +167,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void onOperatorClick(String op) {
         // Reset PIN attempt when operator is pressed
         pinAttempt.setLength(0);
-        lastWasEquals = false;
+
+        // If last action was equals, use the result as the starting point
+        if (lastWasEquals) {
+            String result = currentNumber.toString();
+            expression.setLength(0);
+            expression.append(result);
+            lastWasEquals = false;
+        }
 
         // Allow minus for negative numbers at start or after open paren
         if (op.equals("-") && (expression.length() == 0 || 
@@ -413,6 +420,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (expression.length() == 0) return;
         
+        // Store the original expression BEFORE closing parentheses for display
+        String originalExpression = expression.toString().replaceAll("→[0-9.-]+", "");
+        
         // Close any open parentheses
         while (openParenCount > 0) {
             expression.append(")");
@@ -459,15 +469,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     });
             }
 
-            // Show result
-            tvExpression.setText(displayExpression + " =");
+            // Show result - top line shows original expression (no =), main display shows result
+            tvExpression.setText(originalExpression);
             tvDisplay.setText(resultStr);
 
-            // Reset for next calculation
+            // Reset for next calculation - but DON'T put result in expression yet
+            // This way originalExpression won't be corrupted if user types more
             expression.setLength(0);
-            expression.append(resultStr);
             currentNumber.setLength(0);
-            currentNumber.append(resultStr);
+            currentNumber.append(resultStr);  // Store result for potential continued calculation
             hasDecimal = resultStr.contains(".");
             lastWasOperator = false;
             lastWasEquals = true;
@@ -568,10 +578,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (Double.isNaN(number) || Double.isInfinite(number)) {
             return "Error";
         }
-        if (number == (long) number) {
+        if (number == (long) number && Math.abs(number) < 1e15) {
             return String.valueOf((long) number);
         } else {
-            return String.format("%.8f", number).replaceAll("0+$", "").replaceAll("\\.$", "");
+            // Use maximum 10 decimal places, trim trailing zeros
+            String formatted = String.format("%.10f", number)
+                .replaceAll("0+$", "")
+                .replaceAll("\\.$", "");
+            
+            // If result is too long, use scientific notation
+            if (formatted.length() > 15) {
+                formatted = String.format("%.6E", number);
+            }
+            return formatted;
         }
     }
 
@@ -582,7 +601,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         expressionText = expressionText.replaceAll("→[0-9.-]+", "");
         tvExpression.setText(expressionText);
         
-        // Always show the full expression in main display
+        // Main display always shows the full expression being built
         tvDisplay.setText(expressionText.isEmpty() ? "0" : expressionText);
     }
     
